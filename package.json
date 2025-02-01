@@ -1,6 +1,6 @@
 {
   "name": "@josselinonduty/rich-presence-builder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Easily create a Discord Rich Presence.",
   "main": "src/index.js",
   "scripts": {
