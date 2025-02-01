@@ -1,5 +1,5 @@
 {
-  "name": "rich-presence-builder",
+  "name": "@josselinonduty/rich-presence-builder",
   "version": "0.1.1",
   "description": "Easily create a Discord Rich Presence.",
   "main": "src/index.js",
@@ -35,10 +35,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheNoob27/rich-presence-builder.git"
+    "url": "git+https://github.com/josselinonduty/rich-presence-builder.git"
   },
   "bugs": {
-    "url": "https://github.com/TheNoob27/rich-presence-builder/issues"
+    "url": "https://github.com/josselinonduty/rich-presence-builder/issues"
   },
-  "homepage": "https://github.com/TheNoob27/rich-presence-builder#readme"
+  "homepage": "https://github.com/josselinonduty/rich-presence-builder#readme"
 }
