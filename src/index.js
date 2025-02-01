@@ -17,6 +17,7 @@ class RichPresence {
         clients.set(this._clientID, new RPCClient({ transport: data.transport || transport })).get(this._clientID)
     }
 
+    this.type = data.type || 0
     this.state = data.state || data.title
     this.details = data.details || data.description
     this.startTimestamp = data.startTimestamp || data.timestamp || data.timestamps && data.timestamps.start
@@ -71,6 +72,7 @@ class RichPresence {
    */
   clear() {
     [
+      "type",
       "state",
       "details",
       "startTimestamp",
@@ -81,6 +83,16 @@ class RichPresence {
       "smallImageText",
     ].forEach(k => this[k] = undefined)
     this.buttons = []
+    return this
+  }
+
+  /**
+   * Set the type for this rich presence
+   * @param {number} type The type
+   * @see https://discord.com/developers/docs/events/gateway-events#activity-object-activity-types
+   */
+  setType(type) {
+    this.type = type
     return this
   }
 
@@ -238,6 +250,7 @@ class RichPresence {
     }
 
     const d = {
+      type: await p(this.type, true),
       state: await p(this.state),
       details: await p(this.details),
       assets: this.largeImage || this.largeImageText || this.smallImage || this.smallImageText

@@ -1,11 +1,13 @@
 declare module "rich-presence-builder" {
   import { Client } from "discord-rpc"
 
+  type NumberResolvable<RichPresence> = number | ((presence?: RichPresence) => number | Promise<number>)
   type StringResolvable<RichPresence> = string | ((presence?: RichPresence) => string | Promise<string>)
   type TimeResolvable<RichPresence> = number | Date | ((presence?: RichPresence) => number | Date | Promise<number | Date>)
 
   interface PresenceData {
     clientID?: string,
+    type: number,
     state: StringResolvable<any>,
     details: StringResolvable<any>,
     startTimestamp: number | Date,
@@ -28,6 +30,7 @@ declare module "rich-presence-builder" {
     private _client?: Client
     readonly client: Client
 
+    type: number
     state: string
     details: string
     startTimestamp: number | Date
@@ -51,6 +54,12 @@ declare module "rich-presence-builder" {
      * Clears the rich presence
      */
     clear(): this
+    /**
+     * Set the type for this rich presence
+     * @param type The type
+     * @see https://discord.com/developers/docs/events/gateway-events#activity-object-activity-types
+     */
+    setType(type: NumberResolvable<this>): this
     /**
      * Set the state for this rich presence
      * @param text The text for the state
